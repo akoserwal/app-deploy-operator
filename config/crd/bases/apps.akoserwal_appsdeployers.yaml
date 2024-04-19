@@ -1,0 +1,61 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.0
+  name: appsdeployers.apps.akoserwal
+spec:
+  group: apps.akoserwal
+  names:
+    kind: Appsdeployer
+    listKind: AppsdeployerList
+    plural: appsdeployers
+    singular: appsdeployer
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Appsdeployer is the Schema for the appsdeployers API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AppsdeployerSpec defines the desired state of Appsdeployer
+            properties:
+              apps:
+                description: Foo is an example field of Appsdeployer. Edit appsdeployer_types.go
+                  to remove/update
+                items:
+                  properties:
+                    image:
+                      type: string
+                    name:
+                      type: string
+                    namespace:
+                      type: string
+                    port:
+                      format: int32
+                      type: integer
+                  type: object
+                type: array
+            type: object
+          status:
+            description: AppsdeployerStatus defines the observed state of Appsdeployer
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -1,0 +1,21 @@
+apiVersion: apps.akoserwal/v1alpha1
+kind: Appsdeployer
+metadata:
+  labels:
+    app.kubernetes.io/name: appsdeployer
+    app.kubernetes.io/instance: appsdeployer-sample
+    app.kubernetes.io/part-of: app-deploy-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: app-deploy-operator
+  name: appsdeployer-dd
+spec:
+  apps:
+    - name: goecho
+      namespace: test
+      image: docker.io/akoserwal/goechoapp:latest
+      port: 3000
+    - name: goecho2
+      namespace: default
+      image: docker.io/akoserwal/goechoapp:latest
+      port: 3000
+
